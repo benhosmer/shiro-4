@@ -1,5 +1,5 @@
-node (){
-  stage 'Fortify Scan'
-//  git url: "https://github.com/venicegeo/pz-ingest.git"
-  sh "echo 'done'"
+node {
+  def mvnHome = tool 'M3'
+  git url: "https://github.com/venicegeo/pz-ingest.git"
+  sh "echo 'testing'"
 }
