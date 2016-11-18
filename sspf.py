@@ -11,7 +11,7 @@ import os
 import json
 
 # The scan results we actually care about
-criteria = ['numberCriticalVulnerabilities', 'numberHighVulnerabilities']
+criteria = ['highVulnCount', 'criticalVulnCount']
 
 def sspf() :
     '''Parses the JSON response from threadfix and returns 1
@@ -25,10 +25,13 @@ def sspf() :
           response = json.load(sys.stdin)
         except ValueError:
           raise SystemExit(1, 'Not valid JSON')
-
     for index, value in enumerate(criteria):
+        if response['object'].get(value) is None:
+            raise SystemExit(1, 'Improper data reported')
         if response['object'].get(value):
-            raise SystemExit(1, 'Vulnerabalities found')
+            print response['object'].get(value)
+            print response['object'].get(key)
+            #raise SystemExit(1, 'Vulnerabalities found')
         else:
             raise SystemExit(0)
 
