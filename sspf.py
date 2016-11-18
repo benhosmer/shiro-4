@@ -29,9 +29,7 @@ def sspf() :
         if response['object'].get(value) is None:
             raise SystemExit(1, 'Improper data reported')
         if response['object'].get(value):
-            print response['object'].get(value)
-            print response['object'].get(key)
-            #raise SystemExit(1, 'Vulnerabalities found')
+            raise SystemExit(1, 'Vulnerabalities found')
         else:
             raise SystemExit(0)
 
