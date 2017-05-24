@@ -5,5 +5,8 @@ node {
   sh "echo 'testing'"
   sh "env"
   sh "echo ${env.THREADFIX_ID}"
+  withCredentials([[$class: 'StringBinding', credentialsId: 'DEPLOY_KEY', variable: 'THREADFIXKEY']]) {
+    sh "echo ${THREADFIXKEY}"
+  }
 }
 
