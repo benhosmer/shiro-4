@@ -14,10 +14,7 @@ node {
   def params = new JsonSlurperClassic().parseText(propsfile)
 
   stage("echo") {
-    println params
-    sh 'echo "${params}"'
-    sh "echo 'testing'"
-    sh "env"
+    println "${params.guid}"
   }
 }
 
