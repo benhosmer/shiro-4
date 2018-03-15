@@ -1,13 +1,11 @@
 node {
 
-  stage("get props") {
-    script {
-      def props = readProperties file:'test.properties';
-    }
-  }
+env.WORKSPACE = pwd()
+def params = readFile "${env.WORKSPACE}/test.properties"
+
 
   stage("echo") {
-    sh 'echo "${properties.name}"'
+    sh 'echo $params'
     sh "echo 'testing'"
     sh "env"
   }
