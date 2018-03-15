@@ -8,7 +8,6 @@ node {
     }
   }
 
-}
   stage("echo") {
     sh 'echo "${properties.name}"'
     sh "echo 'testing'"
