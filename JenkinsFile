@@ -1,12 +1,13 @@
 node {
 
-stage("where") {
-  sh "pwd"
-  sh "ls -al"
-}
 env.WORKSPACE = pwd()
-def params = readFile "${env.WORKSPACE}/test.properties"
 
+  stage("Setup") {
+    deleteDir()
+    git url: "https://github.com/benhosmer/shiro-4.git"
+  }
+
+  def params = readFile "${env.WORKSPACE}/test.properties"
 
   stage("echo") {
     sh 'echo $params'
