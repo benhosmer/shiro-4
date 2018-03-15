@@ -11,8 +11,9 @@ node {
   }
 
   def propsfile = readFile "${env.WORKSPACE}/test.properties"
+  println propsfile.getClass()
   def params = propsfile.split('=')
-  println params
+  println params.getClass()
 
   stage("echo") {
     println params
