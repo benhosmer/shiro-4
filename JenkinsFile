@@ -1,3 +1,5 @@
+#!/usr/bin/groovy
+
 node {
 
 env.WORKSPACE = pwd()
@@ -10,7 +12,7 @@ env.WORKSPACE = pwd()
   def params = readFile "${env.WORKSPACE}/test.properties"
 
   stage("echo") {
-    sh 'echo $params'
+    sh 'echo "${params}"'
     sh "echo 'testing'"
     sh "env"
   }
