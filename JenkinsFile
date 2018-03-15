@@ -10,10 +10,9 @@ node {
     git url: "https://github.com/benhosmer/shiro-4.git"
   }
 
-  def propsfile = readFile "${env.WORKSPACE}/test.properties"
-  println propsfile.getClass()
-  def params = propsfile.split('=')
-  println params.getClass()
+  def propsfile = readFile "${env.WORKSPACE}/test.json"
+  def slurper = new groovy.json.JsonSlurper()
+  def params = slurper.parseText(propsfile)
 
   stage("echo") {
     println params
