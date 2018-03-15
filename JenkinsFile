@@ -11,7 +11,7 @@ node {
   }
 
   def propsfile = readFile "${env.WORKSPACE}/test.properties"
-  def params = new JsonSlurper().parseText(propsfile)
+  def params = propsfile.split('=')
 
   stage("echo") {
     println params
