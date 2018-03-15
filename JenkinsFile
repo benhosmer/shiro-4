@@ -1,10 +1,12 @@
 node {
-
-  def params = readProperties file: './test.properties'
-  stage("Read props") {
-  sh "echo 'testing'"
-  sh "env"
-  sh 'echo "${props.name}"'
+  environmentVariables {
+    env('ONE', '1')
+    propertiesFile('env.properties')
+    keepBuildVariables(true)
+  }
+  stage("echo") {
+    sh "echo 'testing'"
+    sh "env"
   }
 }
 
