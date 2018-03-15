@@ -1,10 +1,11 @@
 node {
-  environmentVariables {
-    env('ONE', '1')
-    propertiesFile('env.properties')
-    keepBuildVariables(true)
-  }
+Properties properties = new Properties()
+File propertiesFile = new File('test.properties')
+propertiesFile.withInputStream {
+    properties.load(it)
+}
   stage("echo") {
+    sh 'echo "${properties.name}"
     sh "echo 'testing'"
     sh "env"
   }
