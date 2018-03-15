@@ -1,8 +1,9 @@
 #!/usr/bin/groovy
 
-node {
+import groovy.json.JsonSlurper
 
-env.WORKSPACE = pwd()
+node {
+  env.WORKSPACE = pwd()
 
   stage("Setup") {
     deleteDir()
@@ -10,7 +11,7 @@ env.WORKSPACE = pwd()
   }
 
   def propsfile = readFile "${env.WORKSPACE}/test.properties"
-  def params = Eval.propsfile
+  def params = new JsonSlurper().parseText(propsfile)
 
   stage("echo") {
     println params
