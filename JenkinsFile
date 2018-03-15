@@ -12,6 +12,7 @@ env.WORKSPACE = pwd()
   def params = readFile "${env.WORKSPACE}/test.properties"
 
   stage("echo") {
+    println $params
     sh 'echo "${params}"'
     sh "echo 'testing'"
     sh "env"
