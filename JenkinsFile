@@ -1,5 +1,9 @@
 node {
 
+stage("where") {
+  sh "pwd"
+  sh "ls -al"
+}
 env.WORKSPACE = pwd()
 def params = readFile "${env.WORKSPACE}/test.properties"
 
