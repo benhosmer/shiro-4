@@ -5,7 +5,7 @@ propertiesFile.withInputStream {
     properties.load(it)
 }
   stage("echo") {
-    sh 'echo "${properties.name}"
+    sh 'echo "${properties.name}"'
     sh "echo 'testing'"
     sh "env"
   }
