@@ -1,6 +1,6 @@
 node {
 
-  stage("get props) {
+  stage("get props") {
     steps {
       script {
         def props = readProperties file:'test.properties';
