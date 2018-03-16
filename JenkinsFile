@@ -6,6 +6,12 @@ node {
   env.WORKSPACE = pwd()
 
   stage("Setup") {
+     properties(
+        [
+          [$class: 'BuildDiscarderProperty', strategy: [$class: 'LogRotator', artifactDaysToKeepStr: '', artifactNumToKeepStr: '', daysToKeepStr: '', numToKeepStr: '5']]
+        ]
+     )
+
     deleteDir()
     git url: "https://github.com/benhosmer/shiro-4.git"
   }
